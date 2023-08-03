@@ -1,0 +1,224 @@
+.nav {
+    width: 100%;
+    padding: 30px 10rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--intermediate_color);
+    color: var(--primary_color);
+}
+
+.navLogo {
+    color: var(--secondary_color);
+    font-size: 25px;
+    margin-left: 16px;
+}
+
+.sideBar,
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--primary_color);
+}
+
+.navUl {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 20px;
+    list-style: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navUl li {
+    display: flex;
+    align-items: center;
+    transition: .7s;
+}
+
+.navUl li:hover, .navUl li a:hover {
+    color: var(--secondary_color);
+}
+
+.userPop {
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 10%;
+    right: -100%;
+    background-color: var(--secondary_color);
+    z-index: 10;
+    text-align: center;
+    transition: 1s;
+}
+
+
+.remUserpop {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.36);
+    position: fixed;
+    top: 0;
+    left: -100%;
+    z-index: 9;
+}
+
+.remUserpop.activeRem {
+    left: 0;
+}
+
+.userBtn {
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    line-height: 40px;
+    background: var(--intermediate_color);
+    color: var(--primary_color);
+    border: none;
+    border-radius: 10px;
+    margin: 0 0 .7rem;
+}
+
+.userP {
+    display: block;
+    line-height: 40px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--primary_color);
+    width: 100%;
+    cursor: pointer;
+    transition: .7s;
+}
+
+.userPop .userP:hover {
+    background-color: var(--intermediate_color);
+}
+
+.userPop.activePop {
+    right: 20%;
+    transition: 1s;
+}
+
+.navUl li a {
+    display: flex;
+    text-decoration: none;
+    color: var(--primary_color);
+    align-items: center;
+    transition: .7s;
+}
+
+.liIcon {
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+.close, .burges {
+    display: none;
+}
+
+@media (max-width: 576px) {
+    .nav {
+        padding: 20px;
+    }
+
+    .navLogo {
+        font-size: 20px;
+        margin-left: 12px;
+    }
+
+    .sideBar {
+        display: block;
+        position: fixed;
+        padding: 20px;
+        left: -100vw;
+        top: 0;
+        background-color: var(--secondary_color);
+        width: 100vw;
+        height: 100vh;
+        transition: .7s;
+        z-index: 10;
+    }
+
+    .sideBar.active {
+        left: 0;
+        transition: .7s;
+        z-index: 10;
+    }
+
+    .navUl {
+        grid-template-columns: auto;
+        row-gap: 10px;
+        margin-top: 2rem;
+    }
+
+    .navUl li:hover, .navUl li a:hover {
+        color: var(--intermediate_color);
+    }
+
+    .userPop {
+        width: 100%;
+        padding: 10px;
+        border-radius: 0;
+        position: static;
+        display: none;
+    }
+
+    .userPop.activePop {
+        display: block;
+    }
+
+    .userBtn {
+        line-height: 35px;
+        background-color: var(--intermediate_color);
+    }
+
+    .userPop span {
+        font-weight: 400;
+    }
+    
+    .userP {
+        line-height: 35px;
+    }
+
+    .navUl li {
+        display: flex;
+        align-items: center;
+        line-height: 30px;
+        width: 200px;
+    }
+
+    .burges {
+        display: block;
+        padding: 5px 7px;
+        background-color: var(--secondary_color);
+        border-radius: 5px;
+    }
+
+    .close {
+        display: block;
+        width: fit-content;
+        padding: 5px 7px;
+        background-color: var(--intermediate_color);
+        border-radius: 5px;
+        margin-left: auto;
+    }
+
+    .accPop {
+        width: 100%;
+        margin: 3rem 0 0;
+        text-align: center;
+        padding: 0 3rem;
+    }
+
+    .accPop button {
+        width: 100%;
+        height: 45px;
+        background-color:  var(--intermediate_color);
+    }
+}

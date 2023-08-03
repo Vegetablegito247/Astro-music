@@ -1,0 +1,23 @@
+.btnlogIn:hover {
+    box-shadow: 4px 4px 2px var(--primary_color);
+    transform: scale(1.02);
+}
+
+@media (max-width: 576px) {
+    .log {
+        width: 100% !important;
+        padding: 0 40px !important;
+        background-color: black !important;
+        border-radius: 0 !important;
+    }
+
+    .linkSign a {
+        color: var(--secondary_color);
+    }
+}
+
+@media (max-width: 375px) {
+    .linkSign {
+        font-size: 13px;
+    }
+}
