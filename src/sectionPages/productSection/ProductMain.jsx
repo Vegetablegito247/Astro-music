@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { addProduct } from '../../redux/slices/productslice';
+import { store } from '../../redux/store';
 // import { useNavigate } from 'react-router-dom';
 
 function ProductMain(props) {
@@ -25,6 +26,12 @@ function ProductMain(props) {
     let data = useSelector((state) =>  state.product.items)
     let count = useSelector((state) => state.product.totalItem)
     let amt = useSelector((state) => state.product.totalPrice)
+    const [ids, setIds] = useState(store.getState()?.product?.items?.map((item) => item.id) || [])
+
+    // subscribe to the store
+    store.subscribe(() => {
+        setIds(store.getState()?.product?.items?.map((item) => item.id))
+    });
 
     // const [cartItems, setCartItems] = useState([])
     // const [count, setCount] = useState(0)
@@ -63,11 +70,18 @@ function ProductMain(props) {
                         <h3>{prd.title}</h3>
                         <p className='price'>{prd.prdPrice}</p>
                         <div className="prd-check">
-                            <div className="prd-buy">
+                            <div className="prd-btn prd-buy">
                                 <BsFillBagFill />
                                 <p>Buy now</p>
                             </div>
-                            <div className="prd-add" onClick={() => dispatch(addProduct(prd))}>
+                            <div className="prd-btn prd-add" onClick={() => {
+                                if (!ids.includes(prd.id)) {
+                                    dispatch(addProduct(prd))
+                                } else {
+                                    // item already added to cart
+                                    alert('Item already added to cart')
+                                }
+                            }}>
                                 <BsFillCartFill />
                                 <p>Add to cart</p>
                             </div>

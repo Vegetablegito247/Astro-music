@@ -26,6 +26,14 @@
     flex-direction: column;
 }
 
+.prd-btn {
+    cursor: pointer;
+}
+
+.relativecart {
+    cursor: pointer;
+}
+
 .img img {
     height: 200px;
     border-radius: 10px;
