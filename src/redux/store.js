@@ -1,9 +1,10 @@
-import { combineReducers } from '@reduxjs/toolkit'
-import { createStore } from 'redux'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import { combineReducers } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
 
-import productslice from './slices/productslice'
+import productslice from './slices/productslice';
 
 const persistConfig = {
     key: 'root',
@@ -18,6 +19,10 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootreducer)
 
-export const store = createStore(persistedReducer)
+export const store = configureStore({
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV !== 'production',
+  middleware: [thunk]
+})
 export const  persistor = persistStore(store)
 
