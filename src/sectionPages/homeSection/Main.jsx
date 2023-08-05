@@ -124,7 +124,7 @@ function Main() {
           cards.map((card) => (
             <div className="card" data-aos='flip-right' key={card.id}>
               <div className="cardImg">
-                <img src={card.imgCard} alt="" />
+                <img style={{ objectFit: "cover" }} src={card.imgCard} alt="" />
               </div>
               <div className="cardText">
                 <h3>{card.head}</h3>
