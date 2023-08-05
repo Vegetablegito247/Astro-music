@@ -6,16 +6,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import { delProduct } from '../redux/slices/productslice';
 
 function Cart() {
-    // getting the products the user picked     
+    // getting the products the user picked
+    const dispatch = useDispatch();
+    let amt = useSelector((state) => state.product.totalPrice);
+    let cartData = useSelector((state) => state.product.items);
 
+    // navigation
+    const navigate = useNavigate();
 
-    const dispatch = useDispatch()
-    let amt = useSelector((state) => state.product.totalPrice)
-    let cartData = useSelector((state) => state.product.items)
+    const checkOut = () => {
+        if (amt !== 0) {
+            navigate('/summary');
+            return true;
+        }
+        else {
+            alert('You can\'t check out when there is no item in the cart');
+            return false;
+        };
+    };
 
     console.log(cartData);
-
-
 
     return (
         <div className="cart">
@@ -62,7 +72,9 @@ function Cart() {
                         <p>{amt}</p>
                     </div>
                     <div className="check-out">
-                        <button className="checkout" >Checkout</button>
+                        <button className="checkout"
+                        onClick={checkOut}
+                         >Checkout</button>
                         <span className='redirect'>Astro still has lot of tools to take you into another dimension, <Link to='/product' >continue shopping</Link></span>
                     </div>
                 </div>
