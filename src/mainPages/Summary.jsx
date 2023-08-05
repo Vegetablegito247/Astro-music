@@ -1,11 +1,41 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { usePaystackPayment } from 'react-paystack';
 import '../sectionPages/chunkStyles/summary.css';
 
 function Summary() {
     // getting the amount and cart length
     let totalAmt = useSelector((state) => state.product.totalPrice);
     let cartLength = useSelector((state) => state.product.items);
+
+    // payment method
+    const config = {
+        reference: (new Date()).getTime().toString(),
+        email: 'akalmin247@gmail.com',
+        amount: totalAmt * 100, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+        publicKey: 'pk_test_8b50893a5891d0e9440ac570f6c142448d2161e3',
+    };
+
+    const onSuccess = (reference) => {
+        alert('Payment has been made successfully')
+    }
+
+    const onClose = (reference) => {
+        alert('Payment has been closed successfully')
+    }
+
+    const initializePayment = usePaystackPayment(config);
+
+    const payNow = () => {
+        let opinion = window.confirm(`Total amount of item is ${cartLength.length} and sum up to ${totalAmt}`)
+
+        if (opinion === true) {
+            initializePayment(onSuccess, onClose)
+        }
+        else {
+            alert('Payment has been cancelled')
+        }
+    };
 
     console.log(cartLength.length)
 
@@ -24,7 +54,7 @@ function Summary() {
                     <span>Items: ( { cartLength.length } )</span>
                     <span className="confirm-total">N{ totalAmt }</span>
                 </div>
-                <button>Confirm Payment</button>
+                <button onClick={payNow}>Confirm Payment</button>
             </div>
         </div>
     </div>
