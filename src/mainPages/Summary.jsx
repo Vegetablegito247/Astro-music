@@ -2,8 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { usePaystackPayment } from 'react-paystack';
 import '../sectionPages/chunkStyles/summary.css';
+import { useNavigate } from 'react-router-dom';
 
 function Summary() {
+    // navigation
+    const navigate = useNavigate()
     // getting the amount and cart length
     let totalAmt = useSelector((state) => state.product.totalPrice);
     let cartLength = useSelector((state) => state.product.items);
@@ -17,27 +20,29 @@ function Summary() {
     };
 
     const onSuccess = (reference) => {
-        alert('Payment has been made successfully')
-    }
+        console.log('Payment has been made successfully');
+        navigate('/product');
+
+    };
 
     const onClose = (reference) => {
-        alert('Payment has been closed successfully')
-    }
+        alert('Payment has been closed successfully');
+    };
 
     const initializePayment = usePaystackPayment(config);
 
     const payNow = () => {
-        let opinion = window.confirm(`Total amount of item is ${cartLength.length} and sum up to ${totalAmt}`)
+        let opinion = window.confirm(`Total amount of item is ${cartLength.length} and sum up to ${totalAmt}`);
 
         if (opinion === true) {
-            initializePayment(onSuccess, onClose)
+            initializePayment(onSuccess, onClose);
         }
         else {
-            alert('Payment has been cancelled')
-        }
+            alert('Payment has been cancelled');
+        };
     };
 
-    console.log(cartLength.length)
+    console.log(cartLength.length);
 
   return (
     <div className='summary-overview'>
@@ -61,4 +66,4 @@ function Summary() {
   )
 }
 
-export default Summary
+export default Summary;

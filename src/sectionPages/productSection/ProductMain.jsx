@@ -7,30 +7,25 @@ import 'aos/dist/aos.css';
 import 'aos/dist/aos.js';
 
 import CartIcon from '../../mainPages/CartIcon';
-import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { addProduct } from '../../redux/slices/productslice';
 import { store } from '../../redux/store';
-// import { useNavigate } from 'react-router-dom';
 
 function ProductMain(props) {
 
     // navigation variable
-     const navigate = useNavigate();
-     const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     // getting the item api from the Product page
     const products = props.products;
 
-    let data = useSelector((state) =>  state.product.items)
-    let count = useSelector((state) => state.product.totalItem)
-    let amt = useSelector((state) => state.product.totalPrice)
-    const [ids, setIds] = useState(store.getState()?.product?.items?.map((item) => item.id) || [])
+    let count = useSelector((state) => state.product.totalItem);
+    const [ids, setIds] = useState(store.getState()?.product?.items?.map((item) => item.id) || []);
 
     // subscribe to the store
     store.subscribe(() => {
-        setIds(store.getState()?.product?.items?.map((item) => item.id))
+        setIds(store.getState()?.product?.items?.map((item) => item.id));
     });
 
     // animation effect function from AOS
