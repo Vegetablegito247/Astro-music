@@ -33,20 +33,6 @@ function ProductMain(props) {
         setIds(store.getState()?.product?.items?.map((item) => item.id))
     });
 
-    // const [cartItems, setCartItems] = useState([])
-    // const [count, setCount] = useState(0)
-
-
-    // the event listener for adding to cart
-    // const addToCart = (product) => {
-    //     setCartItems([...cartItems, product]);
-    //     setCount(count + 1);
-    //     alert(`${product.title} has been added to cart`)
-    //     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    // }
-
-    // the event listener to lead the user to buy page
-
     // animation effect function from AOS
     useEffect(() => {
         AOS.init({
@@ -77,6 +63,7 @@ function ProductMain(props) {
                             <div className="prd-btn prd-add" onClick={() => {
                                 if (!ids.includes(prd.id)) {
                                     dispatch(addProduct(prd))
+                                    alert(`${prd.title} has been added to cart`)
                                 } else {
                                     // item already added to cart
                                     alert('Item already added to cart')
