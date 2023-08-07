@@ -23,6 +23,9 @@ function ProductMain(props) {
     // getting the item api from the Product page
     const products = props.products;
 
+    // getting user details
+    const email = JSON.parse(localStorage.getItem('astroUser'));
+
     // getting the item length to set the number of items
     let count = useSelector((state) => state.product.totalItem);
 
@@ -48,17 +51,17 @@ function ProductMain(props) {
 
     };
     const onClose = (reference) => {
-        alert('Payment has been closed successfully');
+        console.log('Payment has been closed successfully');
     };
     const initializePayment = usePaystackPayment(config);
     // the function for buying now
     const buyNow = (buyPrd) => {
         setBuyAmt(buyPrd.prdPrice)
-        if (buyAmt !== 0) {
+        if (buyAmt !== 0 && email !== null) {
             initializePayment(onSuccess, onClose)
         }
         else {
-            console.log('No amount')
+            alert('You aren\'t logged in yet')
         }
     };
 
