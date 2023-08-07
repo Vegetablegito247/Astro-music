@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
 import '../sectionPages/chunkStyles/cart.css';
@@ -13,7 +13,8 @@ function Cart() {
 
     // navigation
     const navigate = useNavigate();
-
+    
+    // checkout function that validates the cart amounts isn't 0 
     const checkOut = () => {
         if (amt !== 0) {
             navigate('/summary');
@@ -24,8 +25,6 @@ function Cart() {
             return false;
         };
     };
-
-    console.log(cartData);
 
     return (
         <div className="cart">

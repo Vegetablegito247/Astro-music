@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 function Summary() {
     // navigation
     const navigate = useNavigate()
+
     // getting the amount and cart length
     let totalAmt = useSelector((state) => state.product.totalPrice);
     let cartLength = useSelector((state) => state.product.items);
@@ -15,7 +16,7 @@ function Summary() {
     const config = {
         reference: (new Date()).getTime().toString(),
         email: 'akalmin247@gmail.com',
-        amount: totalAmt * 100, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+        amount: totalAmt * 100,
         publicKey: 'pk_test_8b50893a5891d0e9440ac570f6c142448d2161e3',
     };
 

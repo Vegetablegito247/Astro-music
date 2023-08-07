@@ -9,8 +9,6 @@ import Profile from "./mainPages/Profile";
 import EditDetails from "./mainPages/EditDetails";
 import Cart from "./mainPages/Cart";
 import Summary from "./mainPages/Summary";
-import Buy from "./mainPages/Buy";
-
 
 function App() {
 
@@ -26,7 +24,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/edit" element={<EditDetails />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/buy" element={<Buy />} />
           <Route path="/summary" element={<Summary />} />
         </Routes>
         <Footer />

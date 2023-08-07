@@ -3,6 +3,15 @@
     transform: scale(1.1);
 }
 
+.spanErr {
+    color: var(--primary_color);
+    padding-top: .5rem;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
 @media (max-width: 576px) {
     .sign {
         width: 100% !important;
@@ -22,6 +31,11 @@
     .signUpBtn button:hover {
         box-shadow: 4px 4px 2px var(--primary_color);
         transform: scale(1.02);
+    }
+
+    .spanErr {
+        color: var(--secondary_color);
+        font-size: 12px;
     }
 }
 

@@ -48,20 +48,28 @@ function CartIcon(props) {
 
     const navigate = useNavigate();
 
-    const directCart = () => {
+    const email = JSON.parse(localStorage.getItem('astroUser'));
+
+    const handleCart = () => {
         if (count === 0 ) {
             alert('Cart is empty at the moment. Please select a new Cart first and try again.');
             return false;
         }
+        
+        if (email === null) {
+          const signMeUp = window.confirm('Sorry it seems like you aren\'t logged in yet . Do you want to log in to complete your order ?');
+          if(signMeUp === true) {
+            navigate('/login');
+          };
+        }
         else {
-            navigate('/cart');
-            return true;
-        };
-    }
+          navigate('/cart');
+        }
+      }
 
     return (
         <div className='fixedCart' style={fixed}>
-            <div className="relativecart" style={relative} onClick={directCart}>
+            <div className="relativecart" style={relative} onClick={handleCart}>
                 <BsFillCartFill className='cartIcon' style={icon}/>
                 <span style={countIcon}>{count}</span>
             </div>

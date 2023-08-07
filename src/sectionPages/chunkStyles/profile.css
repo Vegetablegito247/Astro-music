@@ -54,6 +54,18 @@
     line-height: 30px;
 }
 
+.noAcct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 270px;
+    border-radius: 10px;
+    margin: 4rem auto;
+    background-color: var(--secondary_color);
+    font-size: 18px;
+}
+
 @media (max-width: 576px) {
     .profile {
         padding: 20px;
@@ -62,6 +74,12 @@
     .profileMenu {
         width: 100%;
     }
+
+    .noAcct {
+        margin: 2rem auto;
+        width: 100%;
+        padding: 0 10px;
+    }
 }
 
 @media (max-width: 428px) {
@@ -69,7 +87,7 @@
         font-size: 17px;
     }
 
-    .profile-head a {
+    .profile-head a, .noAcct {
         font-size: 13px;
     }
 
